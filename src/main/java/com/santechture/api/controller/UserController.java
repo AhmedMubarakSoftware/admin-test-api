@@ -1,16 +1,34 @@
 package com.santechture.api.controller;
 
 
-import com.santechture.api.service.AdminService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.santechture.api.dto.GeneralResponse;
+import com.santechture.api.exception.BusinessExceptions;
+import com.santechture.api.service.UserService;
+import com.santechture.api.validation.AddUserRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
 
 @RestController
-@RequestMapping(path = "admin")
-public class AdminController {
+@RequestMapping(path = "user")
+public class UserController {
 
-    @Autowired
-    private AdminService adminService;
+    private final UserService userService;
 
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping
+    public ResponseEntity<GeneralResponse> list(Pageable pageable){
+        return userService.list(pageable);
+    }
+    @PostMapping
+    public ResponseEntity<GeneralResponse> addNewUser(@RequestBody @Validated AddUserRequest request) throws BusinessExceptions {
+        return userService.addNewUser(request);
+    }
 }

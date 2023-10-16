@@ -1,4 +1,4 @@
-package com.atheletshub.mobile.api.dto;
+package com.santechture.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,8 @@ public class GeneralResponse implements Serializable {
     private Integer total;
     private Object data;
 
-    public GeneralResponse() {}
+    public GeneralResponse() {
+    }
 
     public GeneralResponse(int code, String message) {
         this.code = code;
@@ -41,57 +42,56 @@ public class GeneralResponse implements Serializable {
         this.total = 0;
         this.data = new Object[]{};
 
-        if(status == null){
-            return new ResponseEntity<GeneralResponse>(this,HttpStatus.OK);
+        if (status == null) {
+            return new ResponseEntity<GeneralResponse>(this, HttpStatus.OK);
         }
-        return new ResponseEntity<GeneralResponse>(this,status);
+        return new ResponseEntity<GeneralResponse>(this, status);
     }
 
-    public ResponseEntity<GeneralResponse> response(int code, String message,Object data) {
+    public ResponseEntity<GeneralResponse> response(int code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.total = 1;
         this.data = data;
 
-        return new ResponseEntity<GeneralResponse>(this,HttpStatus.OK);
+        return new ResponseEntity<GeneralResponse>(this, HttpStatus.OK);
     }
 
-    public ResponseEntity<GeneralResponse> response(int code, String message,Object data,HttpStatus status) {
+    public ResponseEntity<GeneralResponse> response(int code, String message, Object data, HttpStatus status) {
         this.code = code;
         this.message = message;
         this.total = 1;
         this.data = data;
 
-        return new ResponseEntity<GeneralResponse>(this,status);
+        return new ResponseEntity<GeneralResponse>(this, status);
     }
 
-    public ResponseEntity<GeneralResponse> create(int code, String message,Object data) {
+    public ResponseEntity<GeneralResponse> create(int code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.total = 1;
         this.data = data;
 
-        return new ResponseEntity<GeneralResponse>(this,HttpStatus.ACCEPTED);
+        return new ResponseEntity<GeneralResponse>(this, HttpStatus.ACCEPTED);
     }
 
-    public ResponseEntity<GeneralResponse> response(int total,int code, String message,Object data) {
+    public ResponseEntity<GeneralResponse> response(int total, int code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.total = total;
         this.data = data;
 
-        return new ResponseEntity<GeneralResponse>(this,HttpStatus.OK);
+        return new ResponseEntity<GeneralResponse>(this, HttpStatus.OK);
     }
 
-    public ResponseEntity<GeneralResponse> response(int total,int code, String message,Object data,HttpStatus status) {
+    public ResponseEntity<GeneralResponse> response(int total, int code, String message, Object data, HttpStatus status) {
         this.code = code;
         this.message = message;
         this.total = total;
         this.data = data;
 
-        return new ResponseEntity<GeneralResponse>(this,status);
+        return new ResponseEntity<GeneralResponse>(this, status);
     }
-
 
 
     public ResponseEntity<GeneralResponse> response(Object data) {
@@ -100,40 +100,39 @@ public class GeneralResponse implements Serializable {
         this.total = 1;
         this.data = data;
 
-        return new ResponseEntity<GeneralResponse>(this,HttpStatus.OK);
+        return new ResponseEntity<GeneralResponse>(this, HttpStatus.OK);
 
     }
 
-    public ResponseEntity<GeneralResponse> response(Object data,HttpStatus status) {
+    public ResponseEntity<GeneralResponse> response(Object data, HttpStatus status) {
         this.code = 200;
         this.message = "Operation Success";
         this.total = 1;
         this.data = data;
 
-        return new ResponseEntity<GeneralResponse>(this,status);
+        return new ResponseEntity<GeneralResponse>(this, status);
 
     }
 
-    public ResponseEntity<GeneralResponse> response(Integer code,String message,HttpStatus status) {
+    public ResponseEntity<GeneralResponse> response(Integer code, String message, HttpStatus status) {
         this.code = code;
         this.message = message;
         this.total = 1;
         this.data = null;
 
-        return new ResponseEntity<GeneralResponse>(this,status);
+        return new ResponseEntity<GeneralResponse>(this, status);
 
     }
 
-    public ResponseEntity<GeneralResponse> responseWithTotal(int total,Object data) {
+    public ResponseEntity<GeneralResponse> responseWithTotal(int total, Object data) {
         this.code = 200;
         this.message = "Operation Success";
         this.total = total;
         this.data = data;
 
-        return new ResponseEntity<GeneralResponse>(this,HttpStatus.OK);
+        return new ResponseEntity<GeneralResponse>(this, HttpStatus.OK);
 
     }
-
 
 
     public ResponseEntity<GeneralResponse> response(int code, String message, int total, Object data, HttpStatus status) {
@@ -142,17 +141,12 @@ public class GeneralResponse implements Serializable {
         this.total = total;
         this.data = data;
 
-        if(status == null){
-            return new ResponseEntity<GeneralResponse>(this,HttpStatus.OK);
+        if (status == null) {
+            return new ResponseEntity<GeneralResponse>(this, HttpStatus.OK);
         }
 
-        return new ResponseEntity<GeneralResponse>(this,status);
+        return new ResponseEntity<GeneralResponse>(this, status);
     }
-
-
-
-
-
 
 
     public Integer getCode() {
